@@ -1,16 +1,19 @@
 `timescale 1ns/1ns
-module Shifters( A, S, L );
+module Shifters( dataA, dataB, Signal, dataOut );
 
-    input  [31:0] A;
-    input  [4:0]  S;
-    output [31:0] L;
+    input [31:0] dataA;
+    input [31:0] dataB;
+    input [5:0] Signal;
+    output [31:0] dataOut;
+
+    parameter SRL = 6'b000010;
 
     genvar mux, level;
 
     wire [31:0] wires [5:0];
 
-    assign wires[0] = A;
-    assign L = wires[5];
+    assign wires[0] = dataA;
+    assign dataOut = (Signal == SRL && (dataB[31:5]) == 25'b0  ) ?  wires[5] : 32'b0 ;
 
     for (level = 0; level < 5; level = level + 1)
     begin
@@ -18,9 +21,9 @@ module Shifters( A, S, L );
         begin
             localparam preMux = mux - 2 ** level;
             if (preMux >= 0)
-                assign wires[level + 1][mux] = S[level] ? wires[level][preMux] : wires[level][mux];
+                assign wires[level + 1][mux] = dataB[level] ? wires[level][preMux] : wires[level][mux];
             else
-                assign wires[level + 1][mux] = S[level] ? 1'b0 : wires[level][mux];
+                assign wires[level + 1][mux] = dataB[level] ? 1'b0 : wires[level][mux];
         end
     end
 
