@@ -9,16 +9,15 @@ module ALU( dataA, dataB, Signal, dataOut, reset );
     output [31:0] dataOut ;
     wire [31:0]   tmp ;
 	wire          binvert;
-	
+
 	parameter AND = 6'b100100;
     parameter OR  = 6'b100101;
     parameter ADD = 6'b100000;
     parameter SUB = 6'b100010;
     parameter SLT = 6'b101010;
-    
+
     assign tmp = 32'b1; // sub
-    XOR_32bits(.a(dataB), .b(tmp), .cout(tmp)); // tmp = b xor 1
-	
-	
+
+    xor invert[31:0] (tmp, dataB, tmp);
 
 endmodule
