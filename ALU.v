@@ -8,6 +8,7 @@ module ALU( dataA, dataB, Signal, dataOut, reset );
     input [5:0]   Signal ;
     output [31:0] dataOut ;
     wire [31:0]   tmp ;
+    wire [31:0]   andOut, orOut, rcaOut, sltOut;
 	wire          binvert;
 
 	parameter AND = 6'b100100;
@@ -20,4 +21,9 @@ module ALU( dataA, dataB, Signal, dataOut, reset );
 
     xor invert[31:0] (tmp, dataB, tmp);
 
+    assign dataOut = (Signal == AND) ? andOut :
+                     (Signal == OR) ? orOut :
+                     (Signal == ADD || Signal == SUB) ? rcaOut :
+                     (Signal == SLT) ? sltOut :
+                     32'b0;
 endmodule
