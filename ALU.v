@@ -21,6 +21,10 @@ module ALU( dataA, dataB, Signal, dataOut, reset );
 
     xor invert[31:0] (tmp, dataB, tmp);
 
+    and and32[31:0] (andOut, dataA, dataB);
+    or or32[31:0] (orOut, dataA, dataB);
+    assign sltOut = dataA < dataB;
+
     assign dataOut = (Signal == AND) ? andOut :
                      (Signal == OR) ? orOut :
                      (Signal == ADD || Signal == SUB) ? rcaOut :
