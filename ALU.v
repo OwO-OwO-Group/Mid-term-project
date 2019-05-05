@@ -1,8 +1,7 @@
 // Test
 `timescale 1ns/1ns
-module ALU( dataA, dataB, Signal, dataOut, reset );
+module ALU( dataA, dataB, Signal, dataOut );
 
-    input         reset;
     input [31:0]  dataA ;
     input [31:0]  dataB ;
     input [5:0]   Signal ;
