@@ -28,5 +28,5 @@ module ALU( dataA, dataB, Signal, dataOut, binvert );
                      (Signal == OR) ? orOut :
                      (Signal == ADD || Signal == SUB) ? FAout :
                      (Signal == SLT) ? sltOut :
-                     32'b0;
+                     1'b0;
 endmodule
