@@ -13,7 +13,15 @@ module Shifters( dataA, dataB, Signal, dataOut );
     assign wires[0] = dataA; // 第一層讀入A
     assign dataOut = (Signal == SLL && (dataB[31:5]) == 27'b0 ) ? wires[5] : 32'b0 ; // 檢查訊號以及移位值是否正確
 
-    assign wires[1][0] = dataB[0] ? 1'0 : dataA[0];
+	// 第一層 8bits test
+    assign wires[1][0] = dataB[0] ? 1'0      : dataA[0];
+	assign wires[1][1] = dataB[0] ? dataA[0] : dataA[1];
+	assign wires[1][2] = dataB[0] ? dataA[1] : dataA[2];
+	assign wires[1][3] = dataB[0] ? dataA[2] : dataA[3];
+	assign wires[1][4] = dataB[0] ? dataA[3] : dataA[4];
+	assign wires[1][5] = dataB[0] ? dataA[4] : dataA[5];
+	assign wires[1][6] = dataB[0] ? dataA[5] : dataA[6];
+	assign wires[1][7] = dataB[0] ? dataA[6] : dataA[7];
 	
 	/*
     for (level = 0; level < 5; level = level + 1)
