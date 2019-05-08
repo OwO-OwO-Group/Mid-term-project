@@ -1,4 +1,3 @@
-// Test
 `timescale 1ns/1ns
 module ALU( dataA, dataB, Signal, dataOut, binvert );
 
@@ -6,9 +5,10 @@ module ALU( dataA, dataB, Signal, dataOut, binvert );
     input   dataB ;
     input [5:0]   Signal ;
     output  dataOut ;
+	input   binvert;
     wire    rcaB ;
     wire    andOut, orOut, FAout, sltOut;
-	wire    binvert, carryOut;
+	wire    carryOut;
 
 	parameter AND = 6'b100100;
     parameter OR  = 6'b100101;
@@ -27,6 +27,5 @@ module ALU( dataA, dataB, Signal, dataOut, binvert );
     assign dataOut = (Signal == AND) ? andOut :
                      (Signal == OR) ? orOut :
                      (Signal == ADD || Signal == SUB) ? FAout :
-                     (Signal == SLT) ? sltOut :
-                     1'b0;
+                     (Signal == SLT) ? sltOut : 1'b0;
 endmodule
