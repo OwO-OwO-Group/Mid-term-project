@@ -13,7 +13,7 @@ module MUX( ALUOut, HiOut, LoOut, Shifter, Signal, dataOut );
     parameter SUB = 6'b100010;
     parameter SLT = 6'b101010;
 
-    parameter SRL = 6'b000010;
+    parameter SLL = 6'b000000;
 
     parameter MFHI= 6'b010000;
     parameter MFLO= 6'b010010;
