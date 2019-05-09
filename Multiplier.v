@@ -22,14 +22,12 @@ module Multiplier( clk, dataA, dataB, Signal, dataOut, reset );
             tmp = 64'b0;
         
         else begin
-		    if ( counter < 32 ) begin
-			
-			    if ( B[0] )        // MPY0
-				    tmp = tmp + A; // Add MCND to PROD
+			if ( B[0] )        // MPY0
+				tmp = tmp + A; // Add MCND to PROD
 				
-				A = A << 1;        // MCND left 1 bit
-				B = B >> 1;        // MPY right 1 bit
-            end // if ( < 32 )
+		    A = A << 1;        // MCND left 1 bit
+			B = B >> 1;        // MPY right 1 bit
+
         end     // else end
     end         // always
 	
