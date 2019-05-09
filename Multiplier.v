@@ -12,15 +12,6 @@ module Multiplier( clk, dataA, dataB, Signal, dataOut, reset );
 	
     parameter MUL = 6'b011001;
     parameter OUT = 6'b111111;
-
-    
-    always@( Signal )
-    begin
-        if ( Signal == MUL )
-        begin
-            counter = 0;
-        end
-    end
     
     always@( posedge clk or reset )
     begin
@@ -38,8 +29,6 @@ module Multiplier( clk, dataA, dataB, Signal, dataOut, reset );
 				
 				A = A << 1;        // MCND left 1 bit
 				B = B >> 1;        // MPY right 1 bit
-				
-				counter = counter + 1;
             end // if ( < 32 )
         end     // else end
     end         // always
