@@ -36,17 +36,18 @@ end
 
 always@( posedge clk )
 begin
-  temp = Signal ;
+  temp <= Signal ;
   if ( Signal == MUL )
   begin
-    counter = counter + 1 ;
-    if ( counter == 32 ) begin
-      temp = 6'b111111 ; // Open HiLo reg for Mul
-      counter = 0 ;
-    end                  // if
-  end                    // MUL end
+    counter <= counter + 1 ;
+    if ( counter == 32 )
+    begin
+      temp <= 6'b111111 ; // Open HiLo reg for Mul
+      counter <= 0 ;
+    end
+  end
 
-end                      // always end
+end
 
 assign SignaltoALU = temp ;
 assign SignaltoSHT = temp ;
