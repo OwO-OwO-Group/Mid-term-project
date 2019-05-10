@@ -36,14 +36,14 @@ end
 
 always@( posedge clk )
 begin
-  temp = Signal ;
+  temp <= Signal ;
   if ( Signal == MUL )
   begin
-    counter = counter + 1 ;
+    counter <= counter + 1 ;
     if ( counter == 32 )
     begin
-      temp = 6'b111111 ; // Open HiLo reg for Mul
-      counter = 0 ;
+      temp <= 6'b111111 ; // Open HiLo reg for Mul
+      counter <= 0 ;
     end
   end
 
