@@ -5,33 +5,42 @@ module Multiplier( clk, dataA, dataB, Signal, dataOut, reset );
     input [31:0] dataA, dataB;
     input [5:0] Signal;
     output [63:0] dataOut;
+
     
     reg [31:0] mpy;
     reg [63:0] prod, mcnd;
-    reg [6:0] counter = 6'b0;
     
     parameter MUL = 6'b011001;
     parameter OUT = 6'b111111;
 	
 	always@( Signal )
+
+
+    reg [31:0] mpy;
+    reg [63:0] prod, mcnd;
+
+    parameter MUL = 6'b011001;
+    parameter OUT = 6'b111111;
+
+    always@( Signal )
     begin
       if ( Signal == MUL )
       begin
         prod = 64'b0;
         mcnd = dataA;
         mpy = dataB;
-      end
+      end // if ( Signal == MUL )
 
-    end
-    
+    end   // always@( Signal )
+
     always@( posedge clk or reset )
     begin
-        
-        if ( reset ) 
+
+        if ( reset )
             prod = 64'b0;
-        
+
         else begin
-            case ( Signal ) 
+            case ( Signal )
             MUL:
             begin
                 if ( mpy[0] )            // MPY0
