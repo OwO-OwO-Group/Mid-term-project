@@ -49,7 +49,7 @@ module tb_ALU();
 			$display( "%d%d", inputA, inputB  );
 			if ( ctrl == 6'd25 ) begin
 				#200;
-				$display( "%d: Div End\n", $time/10 );
+				$display( "%d: Mul End\n", $time/10 );
 				
 				#10;
 				#10;
