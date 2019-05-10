@@ -48,12 +48,9 @@ module tb_ALU();
 			else if ( ctrl == 6'd25 ) $write( "MUL(%d) ", ctrl );
 			$display( "%d%d", inputA, inputB  );
 			if ( ctrl == 5'd25 ) begin
-				#330;
+				#200;
 				$display( "%d: Div End\n", $time/10 );
-				/*
-					除法器執行結束後，答案存至Hi-Lo暫存器
-					以下自動產生MFHI, MFLO指令檢查除法運算結果
-				*/
+				
 				#10;
 				#10;
 				
