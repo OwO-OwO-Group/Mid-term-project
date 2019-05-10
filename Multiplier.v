@@ -25,15 +25,15 @@ module Multiplier( clk, dataA, dataB, Signal, dataOut, reset );
             case ( Signal ) 
             MUL:
             begin
-                
-            end                    // end MUL
-            OUT:
-            begin
-			    if ( B[0] )        // MPY0
+                if ( B[0] )        // MPY0
                     tmp = tmp + A; // Add MCND to PROD
                 
                 A = A << 1;        // MCND left 1 bit
                 B = B >> 1;        // MPY right 1 bit
+            end                    // end MUL
+            OUT:
+            begin
+			
             end                    // end OUT
             endcase                // endcase( Signal )
             

@@ -40,14 +40,13 @@ begin
   if ( Signal == MUL )
   begin
     counter = counter + 1 ;
-    if ( counter == 32 )
-    begin
+    if ( counter == 32 ) begin
       temp = 6'b111111 ; // Open HiLo reg for Mul
       counter = 0 ;
-    end
-  end
+    end                  // if
+  end                    // MUL end
 
-end
+end                      // always end
 
 assign SignaltoALU = temp ;
 assign SignaltoSHT = temp ;
