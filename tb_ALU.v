@@ -44,10 +44,10 @@ module tb_ALU();
 			else if ( ctrl == 6'd32 ) $write( "ADD(%d) ", ctrl );
 			else if ( ctrl == 6'd34 ) $write( "SUB(%d) ", ctrl );
 			else if ( ctrl == 6'd42 ) $write( "SLT(%d) ", ctrl );
-			else if ( ctrl == 6'd2 ) $write( "SRL(%d) ", ctrl );
+			else if ( ctrl == 6'd0 ) $write( "SLL(%d) ", ctrl );
 			else if ( ctrl == 6'd25 ) $write( "MUL(%d) ", ctrl );
 			$display( "%d%d", inputA, inputB  );
-			if ( ctrl == 5'd25 ) begin
+			if ( ctrl == 6'd25 ) begin
 				#200;
 				$display( "%d: Div End\n", $time/10 );
 				
