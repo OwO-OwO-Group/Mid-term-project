@@ -12,15 +12,7 @@ module Multiplier( clk, dataA, dataB, Signal, dataOut, reset );
     
     parameter MUL = 6'b011001;
     parameter OUT = 6'b111111;
-	
-	always@( Signal )
 
-
-    reg [31:0] mpy;
-    reg [63:0] prod, mcnd;
-
-    parameter MUL = 6'b011001;
-    parameter OUT = 6'b111111;
 
     always@( Signal )
     begin

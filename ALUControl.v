@@ -51,11 +51,10 @@ begin
     begin
       temp <= 6'b111111 ; // Open HiLo reg for Mul
       counter <= 0 ;
-    end
-  end
+    end // if
+end     // always@
 
 
-end
 
 assign SignaltoALU = temp ;
 assign SignaltoSHT = temp ;
