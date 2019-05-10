@@ -1,14 +1,11 @@
 `timescale 1ns/1ns
-module ALU( dataA, dataB, Signal, dataOut, binvert );
+module ALU( dataA, dataB, Signal, binvert, carryIn, dataOut, carryOut );
 
-    input   dataA ;
-    input   dataB ;
-    input [5:0]   Signal ;
-    output  dataOut ;
-	input   binvert;
-    wire    rcaB ;
-    wire    andOut, orOut, FAout, sltOut;
-	wire    carryOut;
+    input   dataA, dataB, carryIn, binvert;
+    input [5:0]   Signal;
+    output  dataOut, carryOut;
+    wire    rcaB;
+    wire    andOut, orOut, FAout; // 答案
 
 	parameter AND = 6'b100100;
     parameter OR  = 6'b100101;
@@ -16,16 +13,16 @@ module ALU( dataA, dataB, Signal, dataOut, binvert );
     parameter SUB = 6'b100010;
     parameter SLT = 6'b101010;
 
-    and tand (andOut, dataA, dataB);
-    or tor (orOut, dataA, dataB);
-    // slt
+    
+    and tand (andOut, dataA, dataB); // and
+    or tor (orOut, dataA, dataB);    // or
 
-    assign binvert = (Signal == SUB) ? 1'b1 : 1'b0;
     xor invert (rcaB, dataB, binvert);
-    FA tFA (dataA, rcaB, c, carryOut, FAout);
+	
+    FA tFA ( .a(dataA), .b(rcaB), .c(carryIn), .cout(carryOut), .sum(FAout) );   // add or sub
 
     assign dataOut = (Signal == AND) ? andOut :
                      (Signal == OR) ? orOut :
-                     (Signal == ADD || Signal == SUB) ? FAout :
-                     (Signal == SLT) ? sltOut : 1'b0;
+                     (Signal == ADD || Signal == SUB || Signal == SLT) ? FAout : 1'b0;
+                     
 endmodule
