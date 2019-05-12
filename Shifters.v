@@ -186,5 +186,7 @@ module Shifters( dataA, dataB, Signal, dataOut );
 	assign wires[5][29] = dataB[4] ? wires[4][13] : wires[4][29];
 	assign wires[5][30] = dataB[4] ? wires[4][14] : wires[4][30];
 	assign wires[5][31] = dataB[4] ? wires[4][15] : wires[4][31];
+	
+	assign dataOut = wires[5];
 
 endmodule
