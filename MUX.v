@@ -22,6 +22,7 @@ module MUX( ALUOut, HiOut, LoOut, Shifter, Signal, dataOut );
                       Signal == SUB || Signal == SLT) ? ALUOut :
                      (Signal == MFHI) ? HiOut :
                      (Signal == MFLO) ? LoOut :
+					 (Signal == SLL) ? Shifter :
                      32'b0 ;
 
 endmodule
